@@ -1,0 +1,31 @@
+#include "utilities.h"
+
+#include <stdexcept>
+
+Config loadConfig(int argc, char* argv[])
+{
+    Config config;
+    for (int i = 1; i < argc; ++i) //argv[0] is filename.exe
+    {
+        std::string arg = argv[i];
+        if (arg == "-a" && i + 1 < argc)
+        {
+            config.algorithm = argv[++i];
+        }
+        else if (arg == "-i" && i + 1 < argc)
+        {
+            config.inputFile = argv[++i];
+        }
+        else if (arg == "-o" && i + 1 < argc)
+        {
+            config.outputFile = argv[++i];
+        }
+    }
+
+    if (config.algorithm.empty() || config.inputFile.empty() || config.outputFile.empty())
+    {
+        throw std::runtime_error("Invalid arguments!");
+    }
+
+    return config;
+}
