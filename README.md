@@ -69,6 +69,7 @@ git clone https://github.com/johannguyen015/DSA-String-Matching-Project.git
 ```
 
 ### 2. Create your own branch
+
 ```bash
 git checkout -b algorithm/<your-algorithm-name>
 ```
@@ -77,7 +78,16 @@ Example:
 git checkout -b algorithm/naive
 ```
 
-### 3. Build & Run
+### 3. Implement Your Algorithm
+
+- Code into an existing .h and .cpp file (naive, rabin karp, kmp, boyer moore)
+- Implement required functions:
+    - Output locateKeywords(const Input &data) override;
+    - std::string getName() override;
+- You may add additional helper functions if needed
+- Make sure your implementation is consistent with the existing architecture
+
+### 4. Build & Run
 
 - You can double click on file build.bat in your explorer or run ".\build.bat" in terminal
 - To test your algorithm, change *kmp* in build.bat into your algorithm
@@ -88,16 +98,8 @@ Example:
 bin\main.exe -i data/puzzle.txt -a naive -o data/solution.txt
 ```
 
-### 4. Implement Your Algorithm
-
-- Code into an existing .h and .cpp file (naive, rabin karp, kmp, boyer moore)
-- Implement required functions:
-    - Output locateKeywords(const Input &data) override;
-    - std::string getName() override;
-- You may add additional helper functions if needed
-- Make sure your implementation is consistent with the existing architecture
-
 ### 5. Push Your Code
+
 ```bash
 git add .
 git commit -m "Add <your-algorithm-name>"
