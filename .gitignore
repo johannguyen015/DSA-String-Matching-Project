@@ -2,9 +2,10 @@ bin/
 build/
 *.exe
 *.o
-*.obj
-
 .vscode/
 
+# Ignore generated output file to avoid test conflicts
+data/solution.txt
+
+# Ignore macOS system files
 .DS_Store
-Thumbs.db
