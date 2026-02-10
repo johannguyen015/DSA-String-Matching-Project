@@ -3,6 +3,7 @@
 
 #include "utilities.h"
 
+bool isValidAlgorithm(std::string algorithm);
 Config loadConfig(int argc, char* argv[]);
 
 #endif

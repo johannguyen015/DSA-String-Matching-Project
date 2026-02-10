@@ -1,6 +1,7 @@
 #include <fstream>
 #include <string>
 #include <stdexcept>
+#include <iomanip>
 
 #include "utilities.h"
 
@@ -44,12 +45,24 @@ void writeFile(const std::string &fileName, const Output &data)
     for (const Key &key: data.listOfKey)
     {
         outFile << key.keyWord << ": ";
-        for (const Point &point: key.locations)
+        if (key.locations.empty())
         {
-            outFile << '(' << point.startRow << ", " << point.startCol << ") -> (" << point.endRow << ", " << point.endCol << "); ";
+            outFile << "not found";
+        }
+        else
+        {
+            for (const Point &point: key.locations)
+            {
+                outFile << '(' << point.startRow << ", " << point.startCol << ") -> (" << point.endRow << ", " << point.endCol << "); ";
+            }
         }
         outFile << '\n';
     }
+
+    outFile << "--------------------------------" << '\n';
+    outFile << "Algorithm: " << data.algorithm << '\n';
+    outFile << "Comparisons: " << data.comparisons << '\n';
+    outFile << "Execution Time: " << std::fixed << std::setprecision(2) << data.executionTime << " ms" << '\n';
 
     outFile.close();
 }

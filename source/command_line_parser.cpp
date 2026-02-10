@@ -2,6 +2,11 @@
 
 #include <stdexcept>
 
+bool isValidAlgorithm(std::string algorithm)
+{
+    return algorithm == "bf" || algorithm == "rk" || algorithm == "kmp" || algorithm == "bm";
+}
+
 Config loadConfig(int argc, char* argv[])
 {
     Config config;
@@ -22,7 +27,7 @@ Config loadConfig(int argc, char* argv[])
         }
     }
 
-    if (config.algorithm.empty() || config.inputFile.empty() || config.outputFile.empty())
+    if (!isValidAlgorithm(config.algorithm) || config.inputFile.empty() || config.outputFile.empty())
     {
         throw std::runtime_error("Invalid arguments!");
     }
