@@ -3,7 +3,7 @@
 #include "boyer_moore.h"
 
 ///implement the functions
-Output BoyerMoore::locateKeywords(const Input &data) 
+Output BoyerMoore::locate_keywords(const Input &data) 
 {
     Output result;
 
@@ -12,7 +12,7 @@ Output BoyerMoore::locateKeywords(const Input &data)
     return result;
 }
 
-std::string BoyerMoore::getName() 
+std::string BoyerMoore::get_name() 
 {
     return "Boyer Moore";
 }

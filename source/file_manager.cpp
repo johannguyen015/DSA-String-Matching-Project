@@ -5,7 +5,7 @@
 
 #include "utilities.h"
 
-Input readFile(const std::string &fileName)
+Input read_file(const std::string &fileName)
 {
     std::ifstream inputFile(fileName);
     if (!inputFile.is_open())
@@ -34,7 +34,7 @@ Input readFile(const std::string &fileName)
     return data;
 }
 
-void writeFile(const std::string &fileName, const Output &data)
+void write_file(const std::string &fileName, const Output &data)
 {
     std::ofstream outFile(fileName);
     if (!outFile.is_open())

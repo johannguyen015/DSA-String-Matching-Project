@@ -14,8 +14,8 @@ int main(int argc, char* argv[])
     SearchStrategy* searcher = nullptr;
     try
     {
-        Config config = loadConfig(argc, argv);
-        Input data = readFile(config.inputFile);
+        Config config = load_config(argc, argv);
+        Input data = read_file(config.inputFile);
         //Choose algorithm
         if (config.algorithm == "bf")
         {
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
         
         assert(searcher != nullptr && "choose algorithm unsuccessful"); 
         Output result = searcher->locateKeywords(data);
-        writeFile(config.outputFile, result);
+        write_file(config.outputFile, result);
         delete searcher;
         searcher = nullptr;
     }

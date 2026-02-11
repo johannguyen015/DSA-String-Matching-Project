@@ -5,8 +5,8 @@
 
 #include "utilities.h"
 
-Input readFile(const std::string &fileName);
+Input read_file(const std::string &fileName);
 
-void writeFile(const std::string &fileName, const Output &data);
+void write_file(const std::string &fileName, const Output &data);
 
 #endif

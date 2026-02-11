@@ -3,7 +3,7 @@
 #include "naive.h"
 
 ///implement the functions
-Output Naive::locateKeywords(const Input &data) 
+Output Naive::locate_keywords(const Input &data) 
 {
     Output result;
 
@@ -12,7 +12,7 @@ Output Naive::locateKeywords(const Input &data)
     return result;
 }
 
-std::string Naive::getName() 
+std::string Naive::get_name() 
 {
     return "Navie";
 }

@@ -3,7 +3,7 @@
 #include "kmp.h"
 
 ///implement the functions
-Output KnuthMorrisPratt::locateKeywords(const Input &data) 
+Output KnuthMorrisPratt::locate_keywords(const Input &data) 
 {
     Output result;
 
@@ -15,7 +15,7 @@ Output KnuthMorrisPratt::locateKeywords(const Input &data)
     return result;
 }
 
-std::string KnuthMorrisPratt::getName() 
+std::string KnuthMorrisPratt::get_name() 
 {
     return "KMP";
 }

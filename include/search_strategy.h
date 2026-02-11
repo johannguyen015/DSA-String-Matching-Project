@@ -9,8 +9,8 @@ class SearchStrategy
 {
 public:
     virtual ~SearchStrategy() = default; //using compiler's default virtual destructor 
-    virtual Output locateKeywords(const Input &data) = 0;
-    virtual std::string getName() = 0;
+    virtual Output locate_keywords(const Input &data) = 0;
+    virtual std::string get_name() = 0;
 };
 
 #endif

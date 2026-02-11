@@ -2,12 +2,12 @@
 
 #include <stdexcept>
 
-bool isValidAlgorithm(std::string algorithm)
+bool is_valid_algorithm(std::string algorithm)
 {
     return algorithm == "bf" || algorithm == "rk" || algorithm == "kmp" || algorithm == "bm";
 }
 
-Config loadConfig(int argc, char* argv[])
+Config load_config(int argc, char* argv[])
 {
     Config config;
     for (int i = 1; i < argc; ++i) //argv[0] is filename.exe
@@ -27,7 +27,7 @@ Config loadConfig(int argc, char* argv[])
         }
     }
 
-    if (!isValidAlgorithm(config.algorithm) || config.inputFile.empty() || config.outputFile.empty())
+    if (!is_valid_algorithm(config.algorithm) || config.inputFile.empty() || config.outputFile.empty())
     {
         throw std::runtime_error("Invalid arguments!");
     }

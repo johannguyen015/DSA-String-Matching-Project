@@ -8,9 +8,9 @@ class  KnuthMorrisPratt : public SearchStrategy //inherits from SearchStrategy
 {
 public: 
     //query
-    Output locateKeywords(const Input &data) override;
+    Output locate_keywords(const Input &data) override;
     //returns the name of the algorithm
-    std::string getName() override;
+    std::string get_name() override;
 };
 
 #endif

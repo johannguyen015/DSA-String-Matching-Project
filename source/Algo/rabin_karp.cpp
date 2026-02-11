@@ -3,7 +3,7 @@
 #include "rabin_karp.h"
 
 ///implement the functions
-Output RabinKarp::locateKeywords(const Input &data) 
+Output RabinKarp::locate_keywords(const Input &data) 
 {
     Output result;
 
@@ -12,7 +12,7 @@ Output RabinKarp::locateKeywords(const Input &data)
     return result;
 }
 
-std::string RabinKarp::getName() 
+std::string RabinKarp::get_name() 
 {
     return "Rabin Karp";
 }
