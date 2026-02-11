@@ -60,6 +60,17 @@ DSA-String-Matching-Project/
 └── README.md
 ```
 
+## 📝 Code Conventions
+
+| Element | Convention | Rule | Example |
+| :--- | :--- | :--- | :--- |
+| **Functions** | `snake_case` | Starts with a verb. | `calculate_hash()`, `is_valid_string()` |
+| **Variables** | `camelCase` | Noun. | `patternLength`, `textBuffer` |
+| **Constants** | `UPPER_SNAKE_CASE` | All caps, noun. | `MAX_STRING_LENGTH`, `PRIME_BASE` |
+| **Classes / Structs** | `PascalCase` | Noun. | `StringMatcher`, `SuffixTreeNode` |
+| **Booleans** | `camelCase` | Prefix with `is`, `has`, `should`, `can`. | `isMatchFound`, `hasProcessed` |
+| **Files / Directories** | `snake_case` | Lowercase. | `rabin_karp.cpp`, `string_utils.h` |
+
 ## How to use
 
 ### 1. Clone the repository
