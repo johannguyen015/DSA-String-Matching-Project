@@ -1,1 +1,4 @@
-//your output here
+--------------------------------
+Algorithm: kmp
+Comparisons: 10
+Execution Time: 3.02 ms
