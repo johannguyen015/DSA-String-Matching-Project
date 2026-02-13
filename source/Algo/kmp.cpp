@@ -35,25 +35,25 @@ std::vector <int> KnuthMorrisPratt::match_string(int length, const std::function
     // if (length < pattern.size()) return matches;
 
     int m = pattern.size();
-    int j = 0;
+    int k = 0;
 
     for (int i = 0; i < length; ++i)
     {
         char currentChar = get_char(i); //equivalent to text[i]
-        while (j > 0 && currentChar != pattern[j]) 
+        while (k > 0 && currentChar != pattern[k]) 
         {
             ++comparisons; //count
-            j = lps[j - 1];
+            k = lps[k - 1];
         }
         ++comparisons; //count
-        if (currentChar == pattern[j])
+        if (currentChar == pattern[k])
         {
-            ++j;
+            ++k;
         }
-        if (j == m)     
+        if (k == m)     
         {
             matches.push_back(i - m + 1);
-            j = lps[j - 1];
+            k = lps[k - 1];
         }
     }
 
