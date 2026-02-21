@@ -54,25 +54,6 @@ Output RabinKarp::locate_keywords(const Input &data)
     vector<vector<long long>> verticalHash(data.nRow, vector<long long>(data.nCol));
     auto startTime = high_resolution_clock::now();
 
-    //compute horizontalHash
-    for (int i = 0; i < data.nRow; i++)
-    {
-        horizontalHash[i][0] = char_to_int(data.puzzleGrid[i][0]);
-        for (int j = 1; j < data.nCol; j++)
-        {
-            horizontalHash[i][j] = add(multiple(horizontalHash[i][j - 1], BASE), char_to_int(data.puzzleGrid[i][j]));
-        }
-    }
-    //compute vertical horizontalHash
-    for (int i = 0; i < data.nCol; i++)
-    {
-        verticalHash[0][i] = char_to_int(data.puzzleGrid[0][i]);
-        for (int j = 1; j < data.nRow; j++)
-        {
-            verticalHash[j][i] = add(multiple(verticalHash[j - 1][i], BASE), char_to_int(data.puzzleGrid[j][i]));
-        }
-    }
-
     //search keyword
     for (int m = 0; m < data.nKeyword; m++)
     {
@@ -86,11 +67,31 @@ Output RabinKarp::locate_keywords(const Input &data)
         //search horizontal
         for (int i = 0; i < data.nRow; i++)
         {
+            long long currentHash = 0;
+            for (int h = 0; h < lenKeyword - 1; h++)
+            {
+                int lowOder = char_to_int(data.puzzleGrid[i][h]);
+                currentHash = add(multiple(currentHash, BASE), lowOder);
+            }
+
             for (int j = lenKeyword - 1; j < data.nCol; j++)
             {
                 bool isAppear = false;
-                long long prefixHash = (j - lenKeyword >= 0) ? horizontalHash[i][j - lenKeyword] : 0;
-                long long currentHash = subtract(horizontalHash[i][j], multiple(prefixHash, powerLen));
+                
+                if(j == lenKeyword - 1) 
+                    currentHash = add(multiple(currentHash, BASE), char_to_int(data.puzzleGrid[i][j]));
+                else
+                {
+                    int idHighOder = j - lenKeyword;
+                    int highOder = char_to_int(data.puzzleGrid[i][idHighOder]);
+                    int lowOder = char_to_int(data.puzzleGrid[i][j]);
+
+                    //rule out the high-oder number
+                    currentHash = subtract(currentHash, multiple(highOder, powerLen));
+                    //add the low-oder number
+                    currentHash = add(multiple(currentHash, BASE), lowOder);
+                }
+
                 if (keywordHash == currentHash)
                 {
                     isAppear = true;
@@ -119,11 +120,31 @@ Output RabinKarp::locate_keywords(const Input &data)
         //search vertical
         for (int i = 0; i < data.nCol; i++)
         {
+            long long currentHash = 0;
+            for (int h = 0; h < lenKeyword - 1; h++)
+            {
+                int lowOder = char_to_int(data.puzzleGrid[h][i]);
+                currentHash = add(multiple(currentHash, BASE), lowOder);
+            }
+
             for (int j = lenKeyword - 1; j < data.nRow; j++)
             {
                 bool isAppear = false;
-                long long prefixHash = (j - lenKeyword >= 0) ? verticalHash[j - lenKeyword][i] : 0;
-                long long currentHash = subtract(verticalHash[j][i], multiple(prefixHash, powerLen));
+                int lowOder = char_to_int(data.puzzleGrid[j][i]);
+
+                if (j == lenKeyword - 1)
+                    currentHash = add(multiple(currentHash, BASE), lowOder);
+                else
+                {
+                    int idHighOder = j - lenKeyword;
+                    int highOder = char_to_int(data.puzzleGrid[idHighOder][i]);
+
+                    //rule out the high-oder number
+                    currentHash = subtract(currentHash, multiple(highOder, powerLen));
+                    //add the low-oder number
+                    currentHash = add(multiple(currentHash, BASE), lowOder);
+                }
+
                 if (keywordHash == currentHash)
                 {
                     isAppear = true;
