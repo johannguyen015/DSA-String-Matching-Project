@@ -3,4 +3,4 @@ bug: not found
 --------------------------------
 Algorithm: Aho Corasick
 Comparisons: 32
-Execution Time: 0.03 ms
+Execution Time: 0.01 ms

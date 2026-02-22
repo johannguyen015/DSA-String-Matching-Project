@@ -23,6 +23,7 @@ private:
         int child[ALPHABET_SIZE]; //trie's node
         int next[ALPHABET_SIZE]; //deterministic finite automaton
         int fail; //failure link
+        int dict_link;
         std::vector <int> found_word_id; //index of keyword appear in this node
 
         Node()
@@ -30,6 +31,7 @@ private:
             std::fill(child, child + ALPHABET_SIZE, -1);
             std::fill(next, next + ALPHABET_SIZE, -1);
             fail = 0;
+            dict_link = 0;
         }
     };
     std::vector <Node> trie; 

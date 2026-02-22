@@ -52,10 +52,17 @@ void AhoCorasick::build_automaton()
             if (trie[u].child[i] != -1) //have been existed in trie
             {
                 int v = trie[u].child[i];
-                //v_fail = u_fail.next[i]
                 trie[v].fail = trie[trie[u].fail].next[i];
-                //found_word_id_child = found_word_id_par + found_word_id_child
-                trie[v].found_word_id.insert(trie[v].found_word_id.end(), trie[trie[v].fail].found_word_id.begin(), trie[trie[v].fail].found_word_id.end());
+                
+                if (!trie[trie[v].fail].found_word_id.empty())
+                {
+                    trie[v].dict_link = trie[v].fail;
+                }
+                else 
+                {
+                    trie[v].dict_link = trie[trie[v].fail].dict_link;
+                }
+
                 trie[u].next[i] = v; //go to v
                 waitToVisit.push(v); 
             }
@@ -75,20 +82,25 @@ void AhoCorasick::match_string(int length, const std::function <char(int)> &get_
         ++result.comparisons;
         int index = get_char(i) - START_CHAR;
         cur = trie[cur].next[index];
-        if (!trie[cur].found_word_id.empty()) //found keyword
-        {
-            for (int id: trie[cur].found_word_id)
-            {
-                int wordLength = result.listOfKey[id].keyWord.size();
-                //find coordinate on the grid
-                int startRow = curRow + (i - wordLength + 1) * dr;
-                int startCol = curCol + (i - wordLength + 1) * dc;
-                int endRow = curRow + i * dr;
-                int endCol = curCol + i * dc;
 
-                result.listOfKey[id].locations.push_back({startRow, startCol, endRow, endCol});
+        int tmp = cur;
+        while (tmp != 0)
+        {
+            if (!trie[tmp].found_word_id.empty()) //found keyword
+            {
+                for (int id: trie[tmp].found_word_id)
+                {
+                    int wordLength = result.listOfKey[id].keyWord.size();
+                    //find coordinate on the grid
+                    int startRow = curRow + (i - wordLength + 1) * dr;
+                    int startCol = curCol + (i - wordLength + 1) * dc;
+                    int endRow = curRow + i * dr;
+                    int endCol = curCol + i * dc;
+    
+                    result.listOfKey[id].locations.push_back({startRow, startCol, endRow, endCol});
+                }
             }
-            
+            tmp = trie[tmp].dict_link;
         }
     }
 }
