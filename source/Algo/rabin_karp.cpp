@@ -49,9 +49,6 @@ Output RabinKarp::locate_keywords(const Input &data)
     Output result;
     result.comparisons = 0;
     result.algorithm = "Rabin-Karp";
-    
-    vector<vector<long long>> horizontalHash(data.nRow, vector<long long>(data.nCol));
-    vector<vector<long long>> verticalHash(data.nRow, vector<long long>(data.nCol));
     auto startTime = high_resolution_clock::now();
 
     //search keyword
@@ -62,7 +59,7 @@ Output RabinKarp::locate_keywords(const Input &data)
 
         int lenKeyword = data.keyWord[m].size();
         long long keywordHash = compute_data_hash(data.keyWord[m], lenKeyword);
-        long long powerLen = power_by_base(lenKeyword);
+        long long powerLen = power_by_base(lenKeyword - 1);
 
         //search horizontal
         for (int i = 0; i < data.nRow; i++)
