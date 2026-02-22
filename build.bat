@@ -28,7 +28,7 @@ echo ------------------------------------------
 
 :: 4. Chạy thử
 if "%~1"=="" (
-    bin\main.exe -i data/puzzle.txt -a kmp -o data/solution.txt
+    bin\main.exe -i data/puzzle.txt -a ac -o data/solution.txt
 ) else (
     bin\main.exe %*
 )

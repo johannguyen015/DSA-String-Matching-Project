@@ -4,7 +4,7 @@
 
 bool is_valid_algorithm(std::string algorithm)
 {
-    return algorithm == "bf" || algorithm == "rk" || algorithm == "kmp" || algorithm == "bm";
+    return algorithm == "bf" || algorithm == "rk" || algorithm == "kmp" || algorithm == "bm" || algorithm == "ac";
 }
 
 Config load_config(int argc, char* argv[])
