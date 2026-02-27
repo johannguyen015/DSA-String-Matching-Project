@@ -62,111 +62,117 @@ Output RabinKarp::locate_keywords(const Input &data)
         long long powerLen = power_by_base(lenKeyword - 1);
 
         //search horizontal
-        for (int i = 0; i < data.nRow; i++)
+        if (lenKeyword <= data.nCol)
         {
-            long long currentHash = 0;
-            for (int h = 0; h < lenKeyword - 1; h++)
+            for (int i = 0; i < data.nRow; i++)
             {
-                int lowOder = char_to_int(data.puzzleGrid[i][h]);
-                currentHash = add(multiple(currentHash, BASE), lowOder);
-            }
-
-            for (int j = lenKeyword - 1; j < data.nCol; j++)
-            {
-                bool isAppear = false;
-                
-                if(j == lenKeyword - 1) 
-                    currentHash = add(multiple(currentHash, BASE), char_to_int(data.puzzleGrid[i][j]));
-                else
+                long long currentHash = 0;
+                for (int h = 0; h < lenKeyword - 1; h++)
                 {
-                    int idHighOder = j - lenKeyword;
-                    int highOder = char_to_int(data.puzzleGrid[i][idHighOder]);
-                    int lowOder = char_to_int(data.puzzleGrid[i][j]);
-
-                    //rule out the high-oder number
-                    currentHash = subtract(currentHash, multiple(highOder, powerLen));
-                    //add the low-oder number
+                    int lowOder = char_to_int(data.puzzleGrid[i][h]);
                     currentHash = add(multiple(currentHash, BASE), lowOder);
                 }
 
-                if (keywordHash == currentHash)
+                for (int j = lenKeyword - 1; j < data.nCol; j++)
                 {
-                    isAppear = true;
-                    for (int k = 0; k < lenKeyword; k++)
+                    bool isAppear = false;
+
+                    if (j == lenKeyword - 1)
+                        currentHash = add(multiple(currentHash, BASE), char_to_int(data.puzzleGrid[i][j]));
+                    else
                     {
-                        result.comparisons++;
-                        if (data.keyWord[m][k] != data.puzzleGrid[i][j - lenKeyword + 1 + k])
+                        int idHighOder = j - lenKeyword;
+                        int highOder = char_to_int(data.puzzleGrid[i][idHighOder]);
+                        int lowOder = char_to_int(data.puzzleGrid[i][j]);
+
+                        //rule out the high-oder number
+                        currentHash = subtract(currentHash, multiple(highOder, powerLen));
+                        //add the low-oder number
+                        currentHash = add(multiple(currentHash, BASE), lowOder);
+                    }
+
+                    if (keywordHash == currentHash)
+                    {
+                        isAppear = true;
+                        for (int k = 0; k < lenKeyword; k++)
                         {
-                            isAppear = false;
-                            break;
+                            result.comparisons++;
+                            if (data.keyWord[m][k] != data.puzzleGrid[i][j - lenKeyword + 1 + k])
+                            {
+                                isAppear = false;
+                                break;
+                            }
                         }
                     }
-                }
-                if (isAppear)
-                {
-                    Point newPoint;
-                    newPoint.startRow = i;
-                    newPoint.endRow = i;
-                    newPoint.startCol = j - lenKeyword + 1;
-                    newPoint.endCol = j;
-                    currKeyword.locations.push_back(newPoint);
+                    if (isAppear)
+                    {
+                        Point newPoint;
+                        newPoint.startRow = i;
+                        newPoint.endRow = i;
+                        newPoint.startCol = j - lenKeyword + 1;
+                        newPoint.endCol = j;
+                        currKeyword.locations.push_back(newPoint);
+                    }
                 }
             }
         }
 
-        //search vertical
-        for (int i = 0; i < data.nCol; i++)
+        if(lenKeyword <= data.nRow)
         {
-            long long currentHash = 0;
-            for (int h = 0; h < lenKeyword - 1; h++)
+            //search vertical
+            for (int i = 0; i < data.nCol; i++)
             {
-                int lowOder = char_to_int(data.puzzleGrid[h][i]);
-                currentHash = add(multiple(currentHash, BASE), lowOder);
-            }
-
-            for (int j = lenKeyword - 1; j < data.nRow; j++)
-            {
-                bool isAppear = false;
-                int lowOder = char_to_int(data.puzzleGrid[j][i]);
-
-                if (j == lenKeyword - 1)
-                    currentHash = add(multiple(currentHash, BASE), lowOder);
-                else
+                long long currentHash = 0;
+                for (int h = 0; h < lenKeyword - 1; h++)
                 {
-                    int idHighOder = j - lenKeyword;
-                    int highOder = char_to_int(data.puzzleGrid[idHighOder][i]);
-
-                    //rule out the high-oder number
-                    currentHash = subtract(currentHash, multiple(highOder, powerLen));
-                    //add the low-oder number
+                    int lowOder = char_to_int(data.puzzleGrid[h][i]);
                     currentHash = add(multiple(currentHash, BASE), lowOder);
                 }
 
-                if (keywordHash == currentHash)
+                for (int j = lenKeyword - 1; j < data.nRow; j++)
                 {
-                    isAppear = true;
-                    for (int k = 0; k < lenKeyword; k++)
+                    bool isAppear = false;
+                    int lowOder = char_to_int(data.puzzleGrid[j][i]);
+
+                    if (j == lenKeyword - 1)
+                        currentHash = add(multiple(currentHash, BASE), lowOder);
+                    else
                     {
-                        result.comparisons++;
-                        if (data.keyWord[m][k] != data.puzzleGrid[j - lenKeyword + 1 + k][i])
+                        int idHighOder = j - lenKeyword;
+                        int highOder = char_to_int(data.puzzleGrid[idHighOder][i]);
+
+                        //rule out the high-oder number
+                        currentHash = subtract(currentHash, multiple(highOder, powerLen));
+                        //add the low-oder number
+                        currentHash = add(multiple(currentHash, BASE), lowOder);
+                    }
+
+                    if (keywordHash == currentHash)
+                    {
+                        isAppear = true;
+                        for (int k = 0; k < lenKeyword; k++)
                         {
-                            isAppear = false;
-                            break;
+                            result.comparisons++;
+                            if (data.keyWord[m][k] != data.puzzleGrid[j - lenKeyword + 1 + k][i])
+                            {
+                                isAppear = false;
+                                break;
+                            }
                         }
                     }
-                }
-                if (isAppear)
-                {
-                    Point newPoint;
-                    newPoint.startRow = j - lenKeyword + 1;
-                    newPoint.endRow = j;
-                    newPoint.startCol = i;
-                    newPoint.endCol = i;
-                    currKeyword.locations.push_back(newPoint);
+                    if (isAppear)
+                    {
+                        Point newPoint;
+                        newPoint.startRow = j - lenKeyword + 1;
+                        newPoint.endRow = j;
+                        newPoint.startCol = i;
+                        newPoint.endCol = i;
+                        currKeyword.locations.push_back(newPoint);
+                    }
                 }
             }
+            result.listOfKey.push_back(currKeyword);
         }
-        result.listOfKey.push_back(currKeyword);
     }
 
     auto endTime = high_resolution_clock::now();
