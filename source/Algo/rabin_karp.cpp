@@ -58,6 +58,13 @@ Output RabinKarp::locate_keywords(const Input &data)
         currKeyword.keyWord = data.keyWord[m];
 
         int lenKeyword = data.keyWord[m].size();
+        //Check if the keyword longer than data
+        if (lenKeyword > data.nRow && lenKeyword > data.nCol)
+        {
+            result.listOfKey.push_back(currKeyword);
+            continue;
+        }
+
         long long keywordHash = compute_data_hash(data.keyWord[m], lenKeyword);
         long long powerLen = power_by_base(lenKeyword - 1);
 
@@ -117,9 +124,9 @@ Output RabinKarp::locate_keywords(const Input &data)
             }
         }
 
-        if(lenKeyword <= data.nRow)
+        //search vertical
+        if (lenKeyword <= data.nRow)
         {
-            //search vertical
             for (int i = 0; i < data.nCol; i++)
             {
                 long long currentHash = 0;
@@ -171,8 +178,8 @@ Output RabinKarp::locate_keywords(const Input &data)
                     }
                 }
             }
-            result.listOfKey.push_back(currKeyword);
         }
+        result.listOfKey.push_back(currKeyword);
     }
 
     auto endTime = high_resolution_clock::now();
