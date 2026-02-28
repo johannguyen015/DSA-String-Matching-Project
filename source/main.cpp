@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
         }
         
         assert(searcher != nullptr && "choose algorithm unsuccessful"); 
-        Output result = searcher->locateKeywords(data);
+        Output result = searcher->locate_keywords(data);
         write_file(config.outputFile, result);
         delete searcher;
         searcher = nullptr;

@@ -101,12 +101,12 @@ git checkout -b algorithm/naive
 ### 4. Build & Run
 
 - You can double click on file build.bat in your explorer or run ".\build.bat" in terminal
-- To test your algorithm, change *kmp* in build.bat into your algorithm
+- To test your algorithm, change "kmp" (after flag -a) in build.bat into your algorithm (bf/rk/kmp/bm)
 
 Example:
 
 ```bash
-bin\main.exe -i data/puzzle.txt -a naive -o data/solution.txt
+bin\main.exe -i data/puzzle.txt -a bf -o data/solution.txt
 ```
 
 ### 5. Push Your Code
