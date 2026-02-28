@@ -1,6 +1,6 @@
 4 4
-t e s t
-e a b c
+t e s a
+e b u g
 s d e f
 t g h i
 2
