@@ -1,4 +1,6 @@
+test: (0, 0) -> (0, 3); (0, 0) -> (3, 0); 
+bug: not found
 --------------------------------
-Algorithm: kmp
-Comparisons: 10
-Execution Time: 3.02 ms
+Algorithm: KMP
+Comparisons: 68
+Execution Time: 0.01 ms
