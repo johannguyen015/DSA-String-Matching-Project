@@ -8,6 +8,7 @@
 #include "rabin_karp.h"
 #include "kmp.h"
 #include "boyer_moore.h"
+#include "aho_corasick.h"
 
 int main(int argc, char* argv[])
 {
@@ -32,6 +33,10 @@ int main(int argc, char* argv[])
         else if (config.algorithm == "bm")
         {
             searcher = new BoyerMoore();
+        }
+        else if (config.algorithm == "ac")
+        {
+            searcher = new AhoCorasick();
         }
         
         assert(searcher != nullptr && "choose algorithm unsuccessful"); 
