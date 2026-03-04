@@ -74,18 +74,15 @@ Output RabinKarp::locate_keywords(const Input &data)
             for (int i = 0; i < data.nRow; i++)
             {
                 long long currentHash = 0;
-                for (int h = 0; h < lenKeyword - 1; h++)
-                {
-                    int lowOder = char_to_int(data.puzzleGrid[i][h]);
-                    currentHash = add(multiple(currentHash, BASE), lowOder);
-                }
-
-                for (int j = lenKeyword - 1; j < data.nCol; j++)
+                for (int j = 0; j < data.nCol; j++)
                 {
                     bool isAppear = false;
-
-                    if (j == lenKeyword - 1)
-                        currentHash = add(multiple(currentHash, BASE), char_to_int(data.puzzleGrid[i][j]));
+                    if (j < lenKeyword)
+                    {
+                        int lowOder = char_to_int(data.puzzleGrid[i][j]);
+                        currentHash = add(multiple(currentHash, BASE), lowOder);
+                        if (j < lenKeyword - 1) continue;
+                    }
                     else
                     {
                         int idHighOder = j - lenKeyword;
@@ -104,7 +101,7 @@ Output RabinKarp::locate_keywords(const Input &data)
                         for (int k = 0; k < lenKeyword; k++)
                         {
                             result.comparisons++;
-                            if (data.keyWord[m][k] != data.puzzleGrid[i][j - lenKeyword + 1 + k])
+                            if (currKeyword.keyWord[k] != data.puzzleGrid[i][j - lenKeyword + 1 + k])
                             {
                                 isAppear = false;
                                 break;
@@ -130,23 +127,21 @@ Output RabinKarp::locate_keywords(const Input &data)
             for (int i = 0; i < data.nCol; i++)
             {
                 long long currentHash = 0;
-                for (int h = 0; h < lenKeyword - 1; h++)
-                {
-                    int lowOder = char_to_int(data.puzzleGrid[h][i]);
-                    currentHash = add(multiple(currentHash, BASE), lowOder);
-                }
 
-                for (int j = lenKeyword - 1; j < data.nRow; j++)
+                for (int j = 0; j < data.nRow; j++)
                 {
                     bool isAppear = false;
-                    int lowOder = char_to_int(data.puzzleGrid[j][i]);
-
-                    if (j == lenKeyword - 1)
+                    if (j < lenKeyword)
+                    {
+                        int lowOder = char_to_int(data.puzzleGrid[j][i]);
                         currentHash = add(multiple(currentHash, BASE), lowOder);
+                        if (j < lenKeyword - 1) continue;
+                    }
                     else
                     {
                         int idHighOder = j - lenKeyword;
                         int highOder = char_to_int(data.puzzleGrid[idHighOder][i]);
+                        int lowOder = char_to_int(data.puzzleGrid[j][i]);
 
                         //rule out the high-oder number
                         currentHash = subtract(currentHash, multiple(highOder, powerLen));
