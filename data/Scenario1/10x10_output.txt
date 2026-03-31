@@ -1,0 +1,9 @@
+hmgw: not found
+feec: (0, 0) -> (0, 3); 
+xmx: not found
+zvmy: (4, 0) -> (7, 0); (1, 1) -> (4, 1); 
+oi: (5, 3) -> (5, 4); (8, 2) -> (9, 2); 
+--------------------------------
+Algorithm: Naive
+Comparisons: 806
+Execution Time: 0.06 ms
