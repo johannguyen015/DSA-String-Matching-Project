@@ -1,0 +1,24 @@
+cpbqzhojauiknckupdsjjrwaurcqdrnzq: (48, 0) -> (80, 0); 
+vrcesueddxt: (13, 43) -> (13, 53); (68, 46) -> (68, 56); (80, 80) -> (80, 90); (57, 6) -> (67, 6); (60, 16) -> (70, 16); 
+adlhlrckuwgjnhyttrdgmnsktizyfjojmvfxufyxlsqbhouvpg: not found
+grqhrlmmzkwtvngyzilxpnhclkcjerfdzhixqzqhkujkvzkwnv: not found
+uovipyjpwp: not found
+kdzujayjaoxcdypduq: not found
+iixqsnqgwbphr: (1, 72) -> (1, 84); (23, 83) -> (23, 95); (0, 23) -> (12, 23); 
+lrkvdxnxcxpwbmbkjdpdmjwndfxactaut: not found
+cgymkxrshedvvczjezzvtgrnrrfbgblys: not found
+trkoxeinhfvpcpdjdegdpwpelmdcvfgcnbjw: not found
+qaumextkmxzzkodvsbilfdaybzeiknucekofky: (11, 56) -> (11, 93); (20, 39) -> (20, 76); 
+kwpsxxtkvfnrcdavvcrkmvehsjrzufzvgtfuezglvthviqbk: not found
+qmglgkqjgwfizdwgepneyspvnygttyqrkwjzwgmtoapoxefmj: (15, 22) -> (15, 70); (51, 20) -> (51, 68); 
+fwunqxefgktwouibnolkvqcuygvnjlr: not found
+tmlnximifbwczwakbaoxnxetgyjygazmoo: not found
+dbsjyymnpwpknfftkkj: (76, 16) -> (94, 16); 
+vfbmhxeaumchwfklvawmfojmwkrfwdiob: (40, 21) -> (40, 53); (44, 8) -> (44, 40); (46, 47) -> (46, 79); (57, 25) -> (57, 57); (46, 8) -> (78, 8); (58, 57) -> (90, 57); 
+evrsugkhopgaxmzmoueqpxucalsxdgzfzafjobcpghjjbhfb: not found
+jonmcxiofqqlojmoymojijpoptzrtgvccwublqrwsqrgqcq: not found
+tlcshksfflbm: not found
+--------------------------------
+Algorithm: Aho Corasick
+Comparisons: 20000
+Execution Time: 1.17 ms
