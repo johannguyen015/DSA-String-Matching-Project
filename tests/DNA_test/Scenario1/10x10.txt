@@ -1,0 +1,17 @@
+10 10
+a t a g c c g c g a 
+t g g c a t a t a t 
+c c g c t c a t g a 
+c c c c g c c a g a 
+c a c c t a c a c c 
+a c c a g c c t t a 
+g c g c g c c t c c 
+a a g c g g t g t c 
+a t g t c a c t t g 
+c g c c c c a g a g 
+5
+aggcc
+ccaga
+catata
+ccacc
+tctgccc

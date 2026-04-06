@@ -1,8 +1,0 @@
-4 4
-t e s a
-e b u g
-s d e f
-t g h i
-2
-test
-bug
