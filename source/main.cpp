@@ -4,7 +4,7 @@
 #include "command_line_parser.h"
 #include "file_manager.h"
 #include "search_strategy.h"
-#include "naive.h"
+#include "brute_force.h"
 #include "rabin_karp.h"
 #include "kmp.h"
 #include "boyer_moore.h"
@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
         //Choose algorithm
         if (config.algorithm == "bf")
         {
-            searcher = new Naive();
+            searcher = new Brute_force();
         }
         else if (config.algorithm == "rk")
         {

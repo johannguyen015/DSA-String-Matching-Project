@@ -1,14 +1,14 @@
-#ifndef NAIVE_H
-#define NAIVE_H 
+#ifndef BRUTE_FORCE_H
+#define BRUTE_FORCE_H 
 
 #include "search_strategy.h"
 #include "utilities.h"
 
-class  Naive : public SearchStrategy //inherits from SearchStrategy
+class  Brute_force : public SearchStrategy //inherits from SearchStrategy
 {
 public: 
-    Naive() = default;
-    ~Naive() = default;
+    Brute_force() = default;
+    ~Brute_force() = default;
 
     Output locate_keywords(const Input &data) override;
     //returns the name of the algorithm

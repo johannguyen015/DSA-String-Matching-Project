@@ -1,15 +1,15 @@
 #include "search_strategy.h"
 #include "utilities.h"
-#include "naive.h"
+#include "brute_force.h"
 #include <chrono>
 
 using namespace std;
 
-Output Naive::locate_keywords(const Input &data) 
+Output Brute_force::locate_keywords(const Input &data) 
 {
     using namespace std::chrono;
     Output result;
-    result.algorithm = "Naive";
+    result.algorithm = "Brute force";
     result.comparisons = 0;
     auto startTime = high_resolution_clock::now();
 
@@ -82,7 +82,7 @@ Output Naive::locate_keywords(const Input &data)
     return result;
 }
 
-std::string Naive::get_name() 
+std::string Brute_force::get_name() 
 {
-    return "Navie";
+    return "Brute force";
 }
