@@ -1,0 +1,10 @@
+Link video:
+https://youtu.be/C2kyT9Z1JXM?si=XWp0g7TwH61tQiJ7
+
+Timestamps:
+00:00 - Project introduction
+00:39 - Download instruction
+00:51 - Folder structure
+02:04 - Compile code
+02:23 - Command line
+03:25 - Ending
